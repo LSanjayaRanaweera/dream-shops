@@ -22,8 +22,8 @@ public class Image {
     private String fileName;
     private String fileType;
 
-    @Lob                        //Explain
-    private Blob blob;          //Imported from java.sql.Blob package
+    @Lob                            //Explain
+    private Blob image;             //Imported from java.sql.Blob package
     private String downloadUrl;
 
     //use @ANNOTATIONS to establish entity relationship with Product/Image
@@ -35,5 +35,5 @@ public class Image {
 /*
 NOTE: "jakarta.persistence.*" imports entire package.
 It contains many individual sub-packages, e.g., @Id, @ManyToOne, @JoinColumn, @GeneratedValue etc.
-NOTE: 1 Product to MANY Images, hence @ManyToOne annotation is used. In Product class, it is @OneToMany relationship with Images!!
+NOTE: ONE Product to MANY Images, hence @ManyToOne annotation is used. In Product class, it is @OneToMany relationship with Images!!
 */
