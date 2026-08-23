@@ -22,4 +22,5 @@ public class Category {
     //To establish ENTITY relationship with Product/Category
     @OneToMany(mappedBy = "category")
     private List<Product> products;     //List<> imported from java.util.List package
+
 }

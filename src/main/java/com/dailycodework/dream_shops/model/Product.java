@@ -8,8 +8,8 @@ import java.util.List;
 
 @Setter
 @Getter
-// @AllArgsConstructor << this was later removed (@52:25) after implementing a new constructor << NOW to create a Product, it doesn't require all the arguments/properties to be provided
-@NoArgsConstructor
+// @AllArgsConstructor << this was later removed (@52:25) after implementing a new constructor
+@NoArgsConstructor                      // NOW to create a Product, it doesn't require all the arguments/properties to be provided
 @Entity
 public class Product {
     @Id                                 //Designate "id" CLASS property as DB Primary_Key
