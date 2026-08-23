@@ -1,17 +1,14 @@
 package com.dailycodework.dream_shops.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
+// @AllArgsConstructor << this was later removed (@52:25) after implementing a new constructor << NOW to create a Product, it doesn't require all the arguments/properties to be provided
 @NoArgsConstructor
 @Entity
 public class Product {
@@ -35,4 +32,22 @@ public class Product {
     //NOTE: when a Product is removed from the DB, all the images associated with (OneToMany) also will be removed!!
     //NOTE: Category is a stand-alone table!!
     private List<Image> images;         //List<e> imported from java.util.List
+
+//This constructor is REQUIRED >> e.g. To create a new Product object using createProduct() method in ProductService.java (@52:25)
+    public Product(String name, String brand, BigDecimal price, int inventory, String description, Category category) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.inventory = inventory;
+        this.description = description;
+        this.category = category;
+    }
 }
+
+/*@47:00
+NOTE: Product is a DB table (@Entity). Data in it has be preserved, i.e., use @Setter and @Getter instead of @Data.
+NOTE: To create a new table entry, i.e., a new "Product" Class/Object >> we are implementing a REQUEST path.
+Hence a new folder/file was created >> "request/AddProductRequest"
+This file contains the barebones to create a new object/table entry.
+NOTE: AddProductRequest is NOT a table entity (marely a replica) << hence we can use @Data instead of @Getter/@Setter
+*/
