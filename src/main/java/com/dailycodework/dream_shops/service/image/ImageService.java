@@ -23,6 +23,11 @@ public class ImageService implements IImageService{
     private final ImageRepository imageRepository;
     private final IProductService productService;
 
+    public ImageService(ImageRepository imageRepository, IProductService productService) {
+        this.imageRepository = imageRepository;
+        this.productService = productService;
+    }
+
     @Override
     public Image getImageById(Long id) {
         return imageRepository.findById(id)
